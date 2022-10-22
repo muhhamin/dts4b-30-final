@@ -6,8 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-const navItems = ['Indonesian', 'Pricing', 'About'];
-
 const Navbar = () => {
   return (
     <Box sx={{ display: 'flex' }}>
@@ -28,11 +26,13 @@ const Navbar = () => {
             MOVIE LIST
           </Typography>
           <Box sx={{ display: 'block' }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+              <Button sx={{ color: '#fff' }}>
+                Create
               </Button>
-            ))}
+              <Button sx={{ color: '#fff' }}>
+                Logout
+              </Button>
+
           </Box>
         </Toolbar>
       </AppBar>
