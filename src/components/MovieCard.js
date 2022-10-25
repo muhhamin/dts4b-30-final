@@ -7,10 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
 
 const MovieCard = ({ movie }) => {
+  const longText = movie.overview;
+
   return (
     <Card id={movie.id} sx={{ display: "flex", width: 400, margin: 5 }}>
       <CardMedia
@@ -23,21 +26,30 @@ const MovieCard = ({ movie }) => {
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h6">
             {movie.title}
+            {" (" + new Date(movie.release_date).getFullYear() + ")"}
           </Typography>
           <Typography
+            sx={{
+              textAlign: "justify",
+            }}
             variant="subtitle1"
             color="text.secondary"
-            component="div"
-          >
-            {new Date(movie.release_date).getFullYear()}
+            component="div">
+            <ReactReadMoreReadLess
+              charLimit={100}
+              readMoreText={"Read more ▼"}
+              readLessText={"Read less ▲"}
+              readMoreClassName="read-more-less--more"
+              readLessClassName="read-more-less--less">
+              {longText}
+            </ReactReadMoreReadLess>
           </Typography>
           <Box
             sx={{
-              width: 200,
+              width: 100,
               display: "flex",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Rating
               name="read-only"
               precision={0.1}

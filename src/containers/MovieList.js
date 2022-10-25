@@ -26,11 +26,10 @@ const MovieList = () => {
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-between",
-        mt: 5,
-      }}
-    >
+        mt: 0,
+      }}>
       {movies.map((movie) => (
-        <MovieCard movie={movie}></MovieCard>
+        <MovieCard key={movie.id} movie={movie}></MovieCard>
       ))}
     </Box>
   );

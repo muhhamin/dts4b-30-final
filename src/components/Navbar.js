@@ -9,8 +9,6 @@ import * as React from "react";
 import { Navigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 
-const navItems = ["Create", "Logout"];
-
 const Navbar = () => {
   const onLogout = async () => {
     try {
@@ -22,8 +20,8 @@ const Navbar = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav">
+    <Box>
+      <AppBar component="nav" position="static">
         <Toolbar>
           <MovieFilter sx={{ display: "flex", mr: 1 }} />
           <Typography
@@ -39,11 +37,9 @@ const Navbar = () => {
             MOVIE LIST
           </Typography>
           <Box sx={{ display: "block" }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
-            ))}
+            <Button sx={{ color: "#fff" }} onClick={onLogout}>
+              Logout
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

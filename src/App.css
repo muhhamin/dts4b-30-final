@@ -12,3 +12,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.read-more-less--more,
+.read-more-less--less {
+  color: #3366cc;
+}
