@@ -7,7 +7,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./containers/Login";
 import RegisterPage from "./containers/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

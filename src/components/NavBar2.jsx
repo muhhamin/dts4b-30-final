@@ -20,7 +20,7 @@ import { auth } from '../config/firebase';
 const pages = ['Movies', 'Pricing', 'Blog'];
 const settings = ['Dashboard', 'Logout'];
  
-function NavBar() {
+function NavBar2() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -176,4 +176,4 @@ function NavBar() {
     </AppBar>
   );
 }
-export default NavBar;
+export default NavBar2;

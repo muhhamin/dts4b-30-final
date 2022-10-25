@@ -3,7 +3,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import NavBar from "./components/NavBar";
+import NavBar2 from "./components/NavBar2";
 import HomePage from "./containers/HomePage";
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -12,9 +12,9 @@ import MovieList from "./containers/MovieList";
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <NavBar2 />
       <HomePage />
-      <Navbar></Navbar>
+      <Navbar />
       <Routes>
         <Route path="/" element={<MovieList />} />
       </Routes>
