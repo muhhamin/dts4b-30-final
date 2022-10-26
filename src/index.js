@@ -16,6 +16,22 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+  <Route
+          path="login"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <LoginPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <RegisterPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/" element={<App />}>
           <Route
             path="/"
@@ -34,22 +50,7 @@ root.render(
             }
           />
         </Route>
-        <Route
-          path="login"
-          element={
-            <ProtectedRoute loginOnly={false}>
-              <LoginPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <ProtectedRoute loginOnly={false}>
-              <RegisterPage />
-            </ProtectedRoute>
-          }
-        />
+        
         <Route
           path="*"
           element={
