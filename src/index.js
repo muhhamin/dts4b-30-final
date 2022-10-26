@@ -3,7 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import LoginPage from "./containers/Login";
+import RegisterPage from "./containers/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Box } from "@mui/material";
+import Detail from "./components/Detail";
+import MovieList from "./containers/MovieList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,11 +21,52 @@ root.render(
           element={
             <ProtectedRoute>
               <App />
+              <MovieList />
             </ProtectedRoute>
           }
         />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route
+          path="detail/:id"
+          element={
+            <>
+              <App />
+              <Detail />
+            </>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <LoginPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <RegisterPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Box
+              sx={{
+                display: "flex",
+                margin: 10,
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}>
+              <img src={require("./error-404.png")} alt="404" />
+              <p>You have reach the edge of universe</p>
+              <Link to="/">Take me home!</Link>
+            </Box>
+          }
+        />{" "}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -6,60 +6,63 @@ import tmdb from "../apis/tmdb";
 const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
 
 const Detail = () => {
-    const [movie, setMovie] = useState([]);
-    let params = useParams();
+  const [movie, setMovie] = useState([]);
+  let params = useParams();
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            try 
-            {
-                const fetchedMovie = tmdb.get(`/movie/${params.id}`);
-                setMovie(fetchedMovie.data);
-                console.log(fetchedMovie);
-                console.log(movie);
-            } catch (error) {
-                console.log(error);
-              }
-        };
-        fetchMovies();
-    }, [movie, params]);
-    
-
-    return (
-        <Paper
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const fetchedMovie = await tmdb.get(`/movie/${params.id}`);
+        setMovie(fetchedMovie.data);
+        // console.log(params.id);
+        console.log(fetchedMovie.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchMovies();
+  }, []);
+  return (
+    <Paper
       sx={{
-        position: 'relative',
-        backgroundColor: 'grey.800',
-        color: '#fff',
+        position: "relative",
+        backgroundColor: "grey.800",
+        color: "#fff",
         mb: 4,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         backgroundImage: `${BASE_IMAGE_URL}${movie.poster_path}`,
-      }}
-    >
-      {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={`${BASE_IMAGE_URL}${movie.backdrop_path}`} alt="img" />}
+      }}>
+      <img
+        style={{ display: "none" }}
+        src={`${BASE_IMAGE_URL}${movie.backdrop_path}`}
+        alt="img"
+      />
+
       <Box
         sx={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           bottom: 0,
           right: 0,
           left: 0,
-          backgroundColor: 'rgba(0,0,0,.3)',
+          backgroundColor: "rgba(0,0,0,.3)",
         }}
       />
       <Grid container>
         <Grid item md={6}>
           <Box
             sx={{
-              position: 'relative',
+              position: "relative",
               p: { xs: 3, md: 6 },
               pr: { md: 0 },
-            }}
-          >
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            }}>
+            <Typography
+              component="h1"
+              variant="h3"
+              color="inherit"
+              gutterBottom>
               {movie.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
@@ -70,8 +73,7 @@ const Detail = () => {
                 width: 100,
                 display: "flex",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Rating
                 name="read-only"
                 precision={0.1}
@@ -85,7 +87,7 @@ const Detail = () => {
         </Grid>
       </Grid>
     </Paper>
-    )
-}
+  );
+};
 
 export default Detail;
