@@ -42,6 +42,7 @@ export default function SignInSide() {
     const password = data.get('password');
 
     try {
+//       eslint-disable-next-line
         const {user} = await signInWithEmailAndPassword(auth, email, password);
         navigate("/");
     } catch (error) {
