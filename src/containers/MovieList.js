@@ -42,7 +42,7 @@ const MovieList = () => {
 
     const sortValueFromQueryParam = queryParams.get('sort');
     sortMovies(sortValueFromQueryParam);
-  }, [queryParams, moviesReady]);
+  }, [queryParams, moviesReady, movies]);
 
   const setSortParam = (type) => {
     queryParams.set("sort", type);
@@ -91,7 +91,7 @@ const MovieList = () => {
         }}
       >
         {movies.map((movie) => (
-          <MovieCard key={movie.title} movie={movie}></MovieCard>
+          <MovieCard key={movie.title} movie={movie} ></MovieCard>
         ))}
       </Box>
     </Box>
