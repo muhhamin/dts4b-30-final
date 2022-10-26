@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { signOut } from "firebase/auth";
 import * as React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { auth } from "../config/firebase";
 
 const Navbar = () => {
@@ -34,7 +34,13 @@ const Navbar = () => {
               fontWeight: 700,
               letterSpacing: ".3rem",
             }}>
-            MOVIE LIST
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/"
+            >
+              MOVIE LIST
+            </Link>
+            
           </Typography>
           <Box sx={{ display: "block" }}>
             <Button sx={{ color: "#fff" }} onClick={onLogout}>

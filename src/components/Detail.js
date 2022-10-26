@@ -1,6 +1,6 @@
-import { Box, Grid, Paper, Rating, Typography } from "@mui/material";
+import { Box, Button, Grid, Paper, Rating, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import tmdb from "../apis/tmdb";
 
 const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/original";
@@ -14,8 +14,6 @@ const Detail = () => {
       try {
         const fetchedMovie = await tmdb.get(`/movie/${params.id}`);
         setMovie(fetchedMovie.data);
-        // console.log(params.id);
-        console.log(fetchedMovie.data);
       } catch (error) {
         console.log(error);
       }
@@ -32,12 +30,11 @@ const Detail = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundImage: `${BASE_IMAGE_URL}${movie.poster_path}`,
+        backgroundImage: `${BASE_IMAGE_URL}${movie.backdrop_path}`,
       }}>
       <img
-        style={{ display: "none" }}
         src={`${BASE_IMAGE_URL}${movie.backdrop_path}`}
-        alt="img"
+        alt="img" width="500px"
       />
 
       <Box
@@ -86,7 +83,18 @@ const Detail = () => {
           </Box>
         </Grid>
       </Grid>
+      
+      <Button variant="contained" sx={{ ml: 2 }} >
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/"
+            >
+              Back
+            </Link>
+        </Button>
+        <br />
     </Paper>
+    
   );
 };
 
