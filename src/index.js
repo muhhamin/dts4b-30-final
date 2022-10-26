@@ -21,8 +21,24 @@ root.render(
             </ProtectedRoute>
           }
         />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+
+        <Route
+          path="login"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <LoginPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="register"
+          element={
+            <ProtectedRoute loginOnly={false}>
+              <RegisterPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
