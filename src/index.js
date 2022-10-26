@@ -16,57 +16,57 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <App />
-              <MovieList />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="detail/:id"
-          element={
-            <>
-              <App />
-              <Detail />
-            </>
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <ProtectedRoute loginOnly={false}>
-              <LoginPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <ProtectedRoute loginOnly={false}>
-              <RegisterPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <Box
-              sx={{
-                display: "flex",
-                margin: 10,
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-              }}>
-              <img src={require("./error-404.png")} alt="404" />
-              <p>You have reach the edge of universe</p>
-              <Link to="/">Take me home!</Link>
-            </Box>
-          }
-        />{" "}
+        <Route path="/" element={<App />}>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <MovieList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="detail/:id"
+            element={
+              <ProtectedRoute>
+                <Detail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <ProtectedRoute loginOnly={false}>
+                <LoginPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <ProtectedRoute loginOnly={false}>
+                <RegisterPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Box
+                sx={{
+                  display: "flex",
+                  margin: 10,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}>
+                <img src={require("./error-404.png")} alt="404" />
+                <p>You have reach the edge of universe</p>
+                <Link to="/">Take me home!</Link>
+              </Box>
+            }
+          />{" "}
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
