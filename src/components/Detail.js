@@ -19,6 +19,7 @@ const Detail = () => {
       }
     };
     fetchMovies();
+//     eslint-disable-next-line
   }, []);
   return (
     <Paper
